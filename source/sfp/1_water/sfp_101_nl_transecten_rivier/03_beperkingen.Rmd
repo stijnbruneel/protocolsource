@@ -1,0 +1,26 @@
+# Beperkingen van het protocol
+
+```{=html}
+<!--
+Alleen in te vullen indien van toepassing.
+Bespreek onder welke condities het protocol niet gebruikt kan worden of wanneer afwijkingen nodig zijn ten opzichte van het standaard protocol.
+Vermeld hier ook mogelijke interferenties, knelpunten, ...
+-->
+```
+**Begaanbaar:**
+
+-   De te bemonsteren waterloop dient over de volledige lengte en breedte begaanbaar te zijn.
+-   Metingen zullen gebeuren bij droog-weer-omstandigheden waarbij geen significante debietsschommelingen optreden
+
+```{r include=FALSE}
+library(wateRinfo)
+library(ggplot2)
+discharge <- get_timeseries_tsid("69086042",from = Sys.Date()-7,to = Sys.Date())
+```
+
+```{r echo=FALSE}
+ggplot(discharge, aes(x = Timestamp, y = Value)) + 
+    geom_line() + 
+    xlab("") + ylab("m³/s") + 
+    scale_x_datetime(date_labels = "%H:%M\n%Y-%m-%d", date_breaks = "24 hours")
+```

@@ -1,0 +1,26 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+# Onderwerp
+
+## Definities en afkortingen
+
+```{=html}
+<!--
+Definities van begrippen en afkortingen die noodzakelijk zijn om dit document te begrijpen en het protocol op een gepaste manier te kunnen uitvoeren.
+-->
+```
+## Doelstelling en toepassingsgebied
+
+**Doelstelling:** Beschrijven van de fysische toestand van een waterloop op een representatieve wijze door gebruik te maken van nieuwe of bestaande, stationaire transecten.
+De fysische toestand wordt beschreven adhv:
+
+-   stroomsnelheid
+-   waterdiepte
+-   substraat
+-   cover
+
+**Toepassingsgebied:** Waadbare waterlopen waarbij op regelmatige basis verschillende fysische parameters bemonsterd moeten worden.

@@ -1,0 +1,11 @@
+# Principe
+
+```{=html}
+<!--
+Korte omschrijving van de principes waarop het protocol gebaseerd is.
+Bijvoorbeeld het principe achter het nemen van mengmonsters, principe achter visueel inschatten van de bedekking van een plant, ...
+-->
+```
+De metingen dienen representatief te zijn voor de fysische toestand van de waterloop.
+Daarom worden het aantal metingen en de proefopzetverdeling eenduidig vastgelegd volgens een duidelijk bemonsteringschema.
+

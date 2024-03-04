@@ -1,0 +1,224 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+
+# Werkwijze
+
+## Uitvoering
+
+```{=html}
+<!--
+Gedetailleerde omschrijving van alle stappen die doorlopen moeten worden om het protocol uit te voeren.
+Subtitels gebruiken om elke stap te omschrijven.
+-->
+```
+### Installeren van nieuwe transecten of het lokaliseren van bestaande transecten
+
+#### Installeren van nieuwe transecten
+
+##### Riviersectie van 600 meter = groot traject
+
+Om voldoende representatief te zijn dient een riviersectie 600 meter (verder benoemt als een groot traject) te zijn.
+Een startpunt wordt geselecteerd en GPS coordinaten worden genoteerd.
+Vervolgens wordt de rivier afgestapt tot een lengte van 600 meter wordt bekomen en GPS coordinaten worden genoteerd.
+
+##### Riviersecties van 50 meter = kleine trajecten
+
+Een groot traject wordt ingedeeld in kleine trajecten van 50 meter elk, waarbij afwisselend een klein traject wordt opgemeten aan de hand van transecten en een klein traject wordt overgeslagen.
+Uiteindelijk worden er per groot traject van 600 meter zes kleine trajecten van 50 meter opgemeten die niet aan elkaar grenzen.
+
+##### Transecten
+
+Om een gedetailleerd beeld te krijgen van de vorm van de rivier wordt per 50 m traject om de 3,33 m een transect opgemeten.
+Per 50 m traject worden bijgevolg 15 transecten opgemeten.
+Een transect is een dwarsdoorsnede van de rivier.
+
+#### Lokaliseren van bestaande transecten
+
+### Meetpunten
+
+Per transect worden enkele punten opgemeten langs een lijn die van een punt op de rechter oever (RO) naar een punt op de linker oever (LO) loopt of omgekeerd van LO naar RO.
+Deze lijn staat loodrecht op de middellijn van de rivier.
+Het aantal meetpunten in het water zou telkens vijf moeten zijn (Figuur 10).
+De breedte van de rivier (van de waterlijn op de ene oever tot de waterlijn op de andere oever) wordt daarvoor ingedeeld in vijf denkbeeldige cellen, waarbij ieder meetpunt in het water het middelpunt is van 1 van de 5 cellen.
+Door deze werkwijze ontstaat een virtueel raster van cellen waarbinnen alle metingen gebeuren.
+De cel is typisch x bij x meter.
+
+-   De stroomsnelheid en diepte worden opgemeten in het centrum van iedere cel.
+-   Het habitat wordt opgemeten voor de volledige cel.
+
+```{r meetpunten_transect_schets, fig.cap = "Methode voor de meting van één transect.", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/meetpunten_transect_schets.png"))
+```
+
+```{r cellenraster, fig.cap = "Cellenraster waarbinnen de veldmetingen gebeuren (links), zoals bijvoorbeeld het opmeten van de stroomsnelheid met behulp van een stroomsnelheidsmeter (rechts).", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/cellenraster.png",
+                          "./media/stroomsnelheid.png"))
+```
+
+### Overzicht fysische variabelen
+
+```{r echo=FALSE}
+options(knitr.kable.NA = '')
+library(readxl)
+x<-read_excel("./data/overzicht_vars.xlsx")
+knitr::kable(x,format='pipe',kable="Habitatvariabelen die binnen elke cel in het studiegebied worden opgemeten. Submerse vegetatie is ondergedompelde vegetatie, oevervegetatie is vegetatie die over een breedte van minstens 25cm in het water hangt, houtig of stening verwijst naar de aanwezigheid van dood hout of grote stenen, holle oevers zijn holtes in de oever onder water waar men de voet minstens tot de wreef in kan stoppen. Dense vegetatie (compact plantenmateriaal, waar je de bodem niet doorheen ziet) beïnvloedt aanzienlijk de stroomsnelheid. Daarom is de stroomsnelheid tweemaal opgemeten in cellen met dense vegetatie, een eerste maal op 10 cm boven de bodem en een tweede maal 10 cm boven de vegetatie.")
+```
+
+#### Stroomsnelheid
+
+Stroomsnelheid wordt gemeten op volgende dieptes:
+
+-   1-10 cm boven bodem V1
+-   2-10 cm boven dik pakket submerse waterplanten V2 (hou voetje van stroomsnelheidsmeter net boven waterplanten)
+
+```{r echo=FALSE, stroomsnelheid-schets, fig.cap = "Meten van de stroomsnelheid.", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/stroomsnelheid_schets.png"))
+```
+
+#### Diepte
+
+Diepte wordt gemeten op volgende wijzen:
+
+-   Vanop bodem D1
+-   Waterkolom boven dik pakket submerse waterplanten D2
+
+Opmerking: als diepte \<10 cm dan wordt diepte genoteerd als: /
+
+```{r echo=FALSE, diepte-schets, fig.cap = "Meten van de diepte.", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/diepte_schets.png"))
+```
+
+#### Rivierbreedte
+
+#### Cover
+
+Onder cover verstaan we alles waaronder, waarop en waartussen een vis beschutting vindt.
+Alle cover moet vanuit het standpunt van de vis bekeken worden; onderscheid houtig grazig is bv enkel belangrijk ifv de schuilmogelijkheden voor vis.
+
+```{r echo=FALSE}
+options(knitr.kable.NA = '')
+library(readxl)
+x<-read_excel("./data/cover.xlsx")
+knitr::kable(x,format='pipe',kable="Overzicht van de cover die dient opgemeten te worden.")
+```
+
+##### Holle-oever
+
+Het percentage aandeel lengte holle oever langs beide oevers (ie cel 1 en 5) wordt bepaald voor de hele lengte (x) van de desbetreffende cel.
+We spreken pas van een holle oever wanneer je je voet zeker tot aan je wreef/enkels kunt wegmoffelen (dus niet enkel tenen).
+
+```{r echo=FALSE, holle-oever-schets, fig.cap = "Meten van de lengte van de holle oever", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/holle_oever_schets.png"))
+```
+
+##### Waterplanten
+
+-   Type dik (A):
+    -   dik pakket
+    -   veel cover onder en/of tussen
+-   Type dun (B):
+    -   dun of weinig dens
+    -   weinig cover
+-   Type emers (C):
+    -   emerse vetatie
+    -   planten die wortelen in bodem en boven wateroppervlak uitsteken (vb. riet)
+
+```{r echo=FALSE, waterplanten-schets, fig.cap = "Meten van de cover van de waterplanten", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/waterplanten_pak_schets.png",
+                          "./media/waterplanten_dun_schets.png",
+                          "./media/waterplanten_emerse_schets.png"))
+```
+
+##### Individuele items
+
+We maken een onderscheid tussen:
+
+###### Cover Stenen
+
+Grote stenen waarachter (waaronder) vissen beschutting kunnen vinden
+
+```{r echo=FALSE, cover_stenen_schets.png, fig.cap = "Meten van de steen cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/cover_stenen_schets.png"))
+```
+
+###### Cover Hout
+
+Grof hout = Coarse woody debris
+
+```{r echo=FALSE, cover_hout_schets, fig.cap = "Meten van de hout cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/cover_hout_schets.png"))
+```
+
+###### Cover Ander
+
+Ander materiaal dan stenen of hout
+
+```{r echo=FALSE, cover_ander_schets, fig.cap = "Meten van de ander cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/cover_ander_schets.png"))
+```
+
+##### Cover inhangend
+
+Ook beschreven als riparian cover.
+alles wat meer dan 5cm in water hangt; bij onderscheid grazig/houtig is vooral de structuur voor de vis belangrijk: houtige cover vormt een grote waaier over het water (ahw. een houtige holle oever), terwijl grazige cover de oever beperkt verlengt (een tiental cm).
+Een inhangend dik pak bramen die een halve meter in het water hangt, valt dus onder houtig, terwijl een paar klimopranken die tien cm in het water hangen, onder grazige cover te catalogeren zijn
+
+-   Cover houtig
+
+```{r echo=FALSE, inhangend_cover_houtig_schets, fig.cap = "Meten van de houtige inhangende cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/inhangend_cover_houtig_schets.png"))
+```
+
+-   Cover grazig
+
+```{r echo=FALSE, inhangend_cover_grazig_schets, fig.cap = "Meten van de grazige inhangende cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/inhangend_cover_grazig_schets.png"))
+```
+
+##### Cover overhangend
+
+```{r echo=FALSE, overhangend_cover_schets, fig.cap = "Meten van de overhangende cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
+library(knitr)
+include_graphics(path = c("./media/overhangend_cover_schets.png"))
+```
+
+#### Substraat
+
+Alles wat plat op de bodem ligt; wat dus door een vis kan gebruikt worden voor eiafzet/ om voedsel tussen te zoeken/… maar waar een vis zich niet kan in verschuilen, tenzij hij zich ingraaft.
+Substraat onzichtbaar?
+Snorkelen/Core of Van Veen sample nemen; vanaf een diepte van meer dan 1 m wordt substraatbepaling vaak moeilijk.
+Anderzijds zal het substraat bij hogere dieptes meestal slib/leem zijn en bovendien ook vrij homogeen (grotere diepte =\> lagere stroomsnelheid =\> homogener substraat) =\> minder samples nodig:
+
+```{r echo=FALSE}
+options(knitr.kable.NA = '')
+library(readxl)
+x<-read_excel("./data/substraat.xlsx")
+knitr::kable(x,format='pipe',kable="Overzicht van de substraat die dient opgemeten te worden.")
+```
+
+## Registratie en bewaring van resultaten
+
+```{=html}
+<!--
+Opsomming van alle resultaten die bekomen worden na de uitvoering van het protocol en hoe die resultaten geregistreerd, bewaard of opgeslagen moeten worden.
+Voor metingen of observaties: verwijs naar invulformulier (met versienummer; invulformulier toevoegen in bijlage; eventueel bepaalde zaken van invulformulier verduidelijken) en/of naar apparatuur en/of softwareprogramma indien gegevens digitaal worden ingevoerd (verwijs naar `sip` (standaard instrument protocol, `<protocol-code>-YYYY.NN`) indien beschikbaar; indien geen sip beschikbaar, geef de nodige instructies om gegevens op gepaste wijzen in te kunnen geven).
+Voor staalnames: geef aan hoe de stalen bewaard, gelabeld en vervoerd moeten worden.
+Geef aan of de stalen voorbehandeld moeten worden.
+Voor digitale foto’s en/of andere digitale bestanden: geef aan hoe en waar deze bestanden moeten worden opgeslagen.
+Geef eventueel aan welke bestandsnamen aan de bestanden moeten gegeven worden.
+-->
+```

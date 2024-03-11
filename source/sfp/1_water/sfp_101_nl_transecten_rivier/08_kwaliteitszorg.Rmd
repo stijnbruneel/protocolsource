@@ -8,3 +8,6 @@ Indien er niet aan bepaalde kwaliteitscriteria voldaan wordt, kan er eventueel v
 In dit onderdeel kunnen ook bepaalde interkalibratie-oefeningen vermeld worden, die bijvoorbeeld voorafgaand aan elk veldseizoen worden uitgevoerd door de gebruikers van het protocol. 
 -->
 ```
+-   Alle velden van de field sheets dienen ingevuld te worden behalve wanneer een percentage wordt gevraagd en de betreffende klasse niet aanwezig zijn. In dat geval kan de cel leeggelaten worden aangezien dit wordt beschouwd als een 0 waarde.
+-   Consequente labelling voor verzameling abiotische en biotische data en coordinateninvoer is belangrijk om resultaten te linken.
+

@@ -4,6 +4,11 @@ output:
   html_document: default
 ---
 
+```{r include=FALSE}
+library(knitr)
+library(readxl)
+```
+
 # Werkwijze
 
 ## Uitvoering
@@ -18,66 +23,90 @@ Subtitels gebruiken om elke stap te omschrijven.
 
 #### Installeren van nieuwe transecten
 
-##### Riviersectie van 600 meter = groot traject
+##### Riviersectie van 600 meter = sectie
 
-Om voldoende representatief te zijn dient een riviersectie 600 meter (verder benoemt als een groot traject) te zijn.
-Een startpunt wordt geselecteerd en GPS coordinaten worden genoteerd.
-Vervolgens wordt de rivier afgestapt tot een lengte van 600 meter wordt bekomen en GPS coordinaten worden genoteerd.
+Om voldoende representatief te zijn dient een riviersectie 600 meter te zijn.
 
-##### Riviersecties van 50 meter = kleine trajecten
+Concreet: Een startpunt van de sectie wordt geselecteerd en GPS coordinaten worden opgeslagen.
 
-Een groot traject wordt ingedeeld in kleine trajecten van 50 meter elk, waarbij afwisselend een klein traject wordt opgemeten aan de hand van transecten en een klein traject wordt overgeslagen.
-Uiteindelijk worden er per groot traject van 600 meter zes kleine trajecten van 50 meter opgemeten die niet aan elkaar grenzen.
+##### Sub-riviersectie van 50 meter = traject
 
-##### Transecten
+Een sectie wordt ingedeeld in trajecten van 50 meter elk, waarbij afwisselend een traject wordt opgemeten aan de hand van cellen (zie verder) en een traject wordt overgeslagen.
+Uiteindelijk worden er per sectie van 600 meter zes trajecten van 50 meter opgemeten die niet aan elkaar grenzen.
 
-Om een gedetailleerd beeld te krijgen van de vorm van de rivier wordt per 50 m traject om de 3,33 m een transect opgemeten.
-Per 50 m traject worden bijgevolg 15 transecten opgemeten.
-Een transect is een dwarsdoorsnede van de rivier.
+Concreet: Er wordt gestart aan het beginpunt van de sectie en men stapt de rivier af richting eindpunt (ie 600 meter verder).
+Elk 50 meter begrenst men een nieuw traject en de GPS coordinaten worden opgeslagen.
+
+##### Sub-sub-riviersectie van 3,33 meter = transect
+
+Om een gedetailleerd beeld te krijgen van de vorm van de rivier wordt het 50 m traject opgedeeld in transecten van 3,33 m.
+Per 50 m traject worden bijgevolg 15 transecten gecreerd.
+Vooraleer een nieuw transect wordt begrensd, dient het vorige transect afgewerkt te zijn.
+In tegenstelling tot de secties en trajecten worden de transecten daarom niet op voorhand begrensd.
+Het bepalen van de transecten wordt daarom besproken onder de sectie cellen en meetpunten die handelt over de eigenlijke metingen.
 
 #### Lokaliseren van bestaande transecten
 
-### Meetpunten
+Om een goede vergelijking doorheen de tijd te bewerkstelligen dienen dezelfde meetpunten bemonsterd te worden.
+Het is onmogelijk om exact dezelfde locaties terug te vinden maar het is belangrijk om dit zoveel mogelijk na te streven.
 
-Per transect worden enkele punten opgemeten langs een lijn die van een punt op de rechter oever (RO) naar een punt op de linker oever (LO) loopt of omgekeerd van LO naar RO.
-Deze lijn staat loodrecht op de middellijn van de rivier.
-Het aantal meetpunten in het water zou telkens vijf moeten zijn (Figuur 10).
-De breedte van de rivier (van de waterlijn op de ene oever tot de waterlijn op de andere oever) wordt daarvoor ingedeeld in vijf denkbeeldige cellen, waarbij ieder meetpunt in het water het middelpunt is van 1 van de 5 cellen.
+Concreet: Eerst wordt de meest stroomafwaartse grens van de meest stroomafwaartse sectie bepaald mbv opgeslagen coordinaten.
+De grenzen van het meest stroomafwaarts gelegen traject worden bepaald.
+De grenzen van de volgende trajecten van de betreffende sectie worden bepaald.
+Dit wordt herhaald voor de andere secties.
+Na het begrenzen van alle trajecten van alle secties, keert men terug naar het eerste traject van de eerste sectie en begint men met het begrenzen van de cellen (zie volgende).
+
+### Cellen en meetpunten
+
+Zoals eerder aangegeven bevindt er zich binnen een traject om de 3,33 meter een nieuw transect dat wordt bepaald nadat het vorige transect volledig is afgewerkt.
+
+Concreet: Het begin van het transect wordt gekozen op het beginpunt van het traject en het einde van het transect bevindt zich 3,33 meter verder in de lengterichting van de rivier stroomopwaarts.
+Een denkbeeldige lijn, loodrecht op de lengterichting van de rivier, wordt getrokken van de rechteroever naar de linkeroever.
+Deze denkbeeldige lijn wordt opgedeeld in 5 delen of cellen van gelijke breedte (variabel in die mate dat de rivierbreedte variabel is).
+Dit is het eerste transect.
+Het volgende transect zal beginnen op het einde van het vorige transect.
+Elk transect heeft dus 5 cellen met een lengte van 3,33 meter en gelijke breedte.
 Door deze werkwijze ontstaat een virtueel raster van cellen waarbinnen alle metingen gebeuren.
-De cel is typisch x bij x meter.
 
--   De stroomsnelheid en diepte worden opgemeten in het centrum van iedere cel.
--   Het habitat wordt opgemeten voor de volledige cel.
+-   GPS coordinaten worden genomen in het centrum van iedere cel (=meetpunt). Kies voor een duidelijke labelling van de coordinaten met een volgnummer die overeenkomt met de volgorde waarin het veldwerk gebeurd.
+-   De stroomsnelheid en diepte worden opgemeten in het centrum van iedere cel (=meetpunt).
+-   Het habitat (uitgedrukt als een percentage van verschillende klassen) wordt opgemeten voor de volledige cel.
 
-```{r meetpunten_transect_schets, fig.cap = "Methode voor de meting van één transect.", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, meten, fig.cap = "Meetmethode voor 1 transect", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/meetpunten_transect_schets.png"))
 ```
 
-```{r cellenraster, fig.cap = "Cellenraster waarbinnen de veldmetingen gebeuren (links), zoals bijvoorbeeld het opmeten van de stroomsnelheid met behulp van een stroomsnelheidsmeter (rechts).", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, cellenraster, fig.cap = "Cellenraster waarbinnen de veldmetingen gebeuren (links), zoals bijvoorbeeld het opmeten van de stroomsnelheid met behulp van een stroomsnelheidsmeter (rechts).", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/cellenraster.png",
                           "./media/stroomsnelheid.png"))
 ```
 
-### Overzicht fysische variabelen
+### Op te meten variabelen
+
+#### Overzicht variabelen
 
 ```{r echo=FALSE}
 options(knitr.kable.NA = '')
-library(readxl)
 x<-read_excel("./data/overzicht_vars.xlsx")
-knitr::kable(x,format='pipe',kable="Habitatvariabelen die binnen elke cel in het studiegebied worden opgemeten. Submerse vegetatie is ondergedompelde vegetatie, oevervegetatie is vegetatie die over een breedte van minstens 25cm in het water hangt, houtig of stening verwijst naar de aanwezigheid van dood hout of grote stenen, holle oevers zijn holtes in de oever onder water waar men de voet minstens tot de wreef in kan stoppen. Dense vegetatie (compact plantenmateriaal, waar je de bodem niet doorheen ziet) beïnvloedt aanzienlijk de stroomsnelheid. Daarom is de stroomsnelheid tweemaal opgemeten in cellen met dense vegetatie, een eerste maal op 10 cm boven de bodem en een tweede maal 10 cm boven de vegetatie.")
+knitr::kable(x,format='pipe',caption="Habitatvariabelen die binnen elke cel in het studiegebied worden opgemeten. Submerse vegetatie is ondergedompelde vegetatie; oevervegetatie is vegetatie die over een breedte van minstens 25cm in het water hangt; houtig of stening verwijst naar de aanwezigheid van dood hout of grote stenen; holle oevers zijn holtes in de oever onder water waar men de voet minstens tot de wreef in kan stoppen. Dense vegetatie (compact plantenmateriaal, waar je de bodem niet doorheen ziet) beïnvloedt aanzienlijk de stroomsnelheid. Daarom is de stroomsnelheid tweemaal opgemeten in cellen met dense vegetatie, een eerste maal op 10 cm boven de bodem en een tweede maal 10 cm boven de vegetatie.")
+```
+
+#### Template field sheets
+
+```{r echo=FALSE}
+options(knitr.kable.NA = '')
+x<-read_excel("./data/template_field_sheet.xlsx")
+knitr::kable(x,format='pipe',caption="In te vullen field sheet per cel.")
 ```
 
 #### Stroomsnelheid
 
-Stroomsnelheid wordt gemeten op volgende dieptes:
+Stroomsnelheid wordt gemeten op volgende dieptes telkens in het midden van de cel:
 
--   1-10 cm boven bodem V1
--   2-10 cm boven dik pakket submerse waterplanten V2 (hou voetje van stroomsnelheidsmeter net boven waterplanten)
+-   10 cm boven bodem (V1)
+-   10 cm boven dik pakket submerse waterplanten (V2): hou het voetje van stroomsnelheidsmeter net boven de waterplanten
 
-```{r echo=FALSE, stroomsnelheid-schets, fig.cap = "Meten van de stroomsnelheid.", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, stroomsnelheid-schets, fig.cap = "Meten van de stroomsnelheid.", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/stroomsnelheid_schets.png"))
 ```
 
@@ -85,17 +114,18 @@ include_graphics(path = c("./media/stroomsnelheid_schets.png"))
 
 Diepte wordt gemeten op volgende wijzen:
 
--   Vanop bodem D1
--   Waterkolom boven dik pakket submerse waterplanten D2
+-   Van bodem tot wateroppervlakte (D1)
+-   Van de top van het dik pakket submerse waterplanten tot wateroppervlakte (D2)
 
 Opmerking: als diepte \<10 cm dan wordt diepte genoteerd als: /
 
-```{r echo=FALSE, diepte-schets, fig.cap = "Meten van de diepte.", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, diepte-schets, fig.cap = "Meten van de diepte.", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/diepte_schets.png"))
 ```
 
 #### Rivierbreedte
+
+De rivierbreedte van een bepaald traject wordt telkens gemeten thv de celmiddens.
 
 #### Cover
 
@@ -104,22 +134,22 @@ Alle cover moet vanuit het standpunt van de vis bekeken worden; onderscheid hout
 
 ```{r echo=FALSE}
 options(knitr.kable.NA = '')
-library(readxl)
 x<-read_excel("./data/cover.xlsx")
 knitr::kable(x,format='pipe',kable="Overzicht van de cover die dient opgemeten te worden.")
 ```
 
 ##### Holle-oever
 
-Het percentage aandeel lengte holle oever langs beide oevers (ie cel 1 en 5) wordt bepaald voor de hele lengte (x) van de desbetreffende cel.
+Het percentage aandeel lengte holle oever langs beide oevers (ie rechterover cel 1 en linkeroever cel 5) wordt bepaald voor de hele lengte (3,33) van de desbetreffende cel.
 We spreken pas van een holle oever wanneer je je voet zeker tot aan je wreef/enkels kunt wegmoffelen (dus niet enkel tenen).
 
-```{r echo=FALSE, holle-oever-schets, fig.cap = "Meten van de lengte van de holle oever", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, holle-oever-schets, fig.cap = "Meten van de lengte van de holle oever", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/holle_oever_schets.png"))
 ```
 
 ##### Waterplanten
+
+Voor elk type wordt het procentueel aandeel bepaald (**x: niet helemaal duidelijk voor mij hoe percentages hier werken**)
 
 -   Type dik (A):
     -   dik pakket
@@ -131,23 +161,27 @@ include_graphics(path = c("./media/holle_oever_schets.png"))
     -   emerse vetatie
     -   planten die wortelen in bodem en boven wateroppervlak uitsteken (vb. riet)
 
-```{r echo=FALSE, waterplanten-schets, fig.cap = "Meten van de cover van de waterplanten", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
-include_graphics(path = c("./media/waterplanten_pak_schets.png",
-                          "./media/waterplanten_dun_schets.png",
-                          "./media/waterplanten_emerse_schets.png"))
+```{r echo=FALSE, waterplantenPak, fig.cap = "Meten van de cover van de waterplanten pak", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = c("./media/waterplanten_pak_schets.png"))
+```
+
+```{r echo=FALSE, waterplantenDun, fig.cap = "Meten van de cover van de waterplanten dun", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = c("./media/waterplanten_dun_schets.png"))
+```
+
+```{r echo=FALSE, waterplantenEmerse, fig.cap = "Meten van de cover van de waterplanten emerse", fig.show = "hold", out.width = "50%", fig.align = "center"}
+include_graphics(path = c("./media/waterplanten_emerse_schets.png"))
 ```
 
 ##### Individuele items
 
-We maken een onderscheid tussen:
+We maken een onderscheid tussen: (**x: opnieuw aandeel tov wat?**)
 
 ###### Cover Stenen
 
 Grote stenen waarachter (waaronder) vissen beschutting kunnen vinden
 
-```{r echo=FALSE, cover_stenen_schets.png, fig.cap = "Meten van de steen cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, coverStenen, fig.cap = "Meten van de steen cover", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/cover_stenen_schets.png"))
 ```
 
@@ -155,8 +189,7 @@ include_graphics(path = c("./media/cover_stenen_schets.png"))
 
 Grof hout = Coarse woody debris
 
-```{r echo=FALSE, cover_hout_schets, fig.cap = "Meten van de hout cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, coverHout, fig.cap = "Meten van de hout cover", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/cover_hout_schets.png"))
 ```
 
@@ -164,8 +197,7 @@ include_graphics(path = c("./media/cover_hout_schets.png"))
 
 Ander materiaal dan stenen of hout
 
-```{r echo=FALSE, cover_ander_schets, fig.cap = "Meten van de ander cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, coverAnder, fig.cap = "Meten van de ander cover", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/cover_ander_schets.png"))
 ```
 
@@ -177,22 +209,19 @@ Een inhangend dik pak bramen die een halve meter in het water hangt, valt dus on
 
 -   Cover houtig
 
-```{r echo=FALSE, inhangend_cover_houtig_schets, fig.cap = "Meten van de houtige inhangende cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, coverInhangendHoutig, fig.cap = "Meten van de houtige inhangende cover", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/inhangend_cover_houtig_schets.png"))
 ```
 
 -   Cover grazig
 
-```{r echo=FALSE, inhangend_cover_grazig_schets, fig.cap = "Meten van de grazige inhangende cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, coverInhangendGrazig, fig.cap = "Meten van de grazige inhangende cover", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/inhangend_cover_grazig_schets.png"))
 ```
 
 ##### Cover overhangend
 
-```{r echo=FALSE, overhangend_cover_schets, fig.cap = "Meten van de overhangende cover", fig.show = "hold", out.width = "50%", fig.align = "default"}
-library(knitr)
+```{r echo=FALSE, coverOverhangend, fig.cap = "Meten van de overhangende cover", fig.show = "hold", out.width = "50%", fig.align = "center"}
 include_graphics(path = c("./media/overhangend_cover_schets.png"))
 ```
 
@@ -205,7 +234,6 @@ Anderzijds zal het substraat bij hogere dieptes meestal slib/leem zijn en bovend
 
 ```{r echo=FALSE}
 options(knitr.kable.NA = '')
-library(readxl)
 x<-read_excel("./data/substraat.xlsx")
 knitr::kable(x,format='pipe',kable="Overzicht van de substraat die dient opgemeten te worden.")
 ```

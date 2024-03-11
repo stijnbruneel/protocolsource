@@ -3,6 +3,7 @@
 ## Apparatuur
 
 -   stroomsnelheidsmeter
+-   Trimble
 
 ```{=html}
 <!--
@@ -13,6 +14,9 @@ Indien geen specifiek `sip`'s voorhanden, illustreer de toegelaten apparatuur me
 ## Materiaal
 
 -   lintmeter
+-   waadpak
+-   touw
+-   witte verf
 
 ```{=html}
 <!--

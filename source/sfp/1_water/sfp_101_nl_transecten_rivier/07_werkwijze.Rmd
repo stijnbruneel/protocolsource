@@ -27,7 +27,7 @@ Subtitels gebruiken om elke stap te omschrijven.
 
 Om voldoende representatief te zijn dient een riviersectie 600 meter te zijn.
 
-Concreet: Een startpunt van de sectie wordt geselecteerd en GPS coordinaten worden opgeslagen.
+Concreet: Een startpunt van de sectie wordt geselecteerd en GPS coördinaten worden opgeslagen.
 
 ##### Sub-riviersectie van 50 meter = traject
 
@@ -35,12 +35,12 @@ Een sectie wordt ingedeeld in trajecten van 50 meter elk, waarbij afwisselend ee
 Uiteindelijk worden er per sectie van 600 meter zes trajecten van 50 meter opgemeten die niet aan elkaar grenzen.
 
 Concreet: Er wordt gestart aan het beginpunt van de sectie en men stapt de rivier af richting eindpunt (ie 600 meter verder).
-Elk 50 meter begrenst men een nieuw traject en de GPS coordinaten worden opgeslagen.
+Elk 50 meter begrenst men een nieuw traject en de GPS coördinaten worden opgeslagen.
 
 ##### Sub-sub-riviersectie van 3,33 meter = transect
 
 Om een gedetailleerd beeld te krijgen van de vorm van de rivier wordt het 50 m traject opgedeeld in transecten van 3,33 m.
-Per 50 m traject worden bijgevolg 15 transecten gecreerd.
+Per 50 m traject worden bijgevolg 15 transecten gecreëerd.
 Vooraleer een nieuw transect wordt begrensd, dient het vorige transect afgewerkt te zijn.
 In tegenstelling tot de secties en trajecten worden de transecten daarom niet op voorhand begrensd.
 Het bepalen van de transecten wordt daarom besproken onder de sectie cellen en meetpunten die handelt over de eigenlijke metingen.
@@ -50,7 +50,7 @@ Het bepalen van de transecten wordt daarom besproken onder de sectie cellen en m
 Om een goede vergelijking doorheen de tijd te bewerkstelligen dienen dezelfde meetpunten bemonsterd te worden.
 Het is onmogelijk om exact dezelfde locaties terug te vinden maar het is belangrijk om dit zoveel mogelijk na te streven.
 
-Concreet: Eerst wordt de meest stroomafwaartse grens van de meest stroomafwaartse sectie bepaald mbv opgeslagen coordinaten.
+Concreet: Eerst wordt de meest stroomafwaartse grens van de meest stroomafwaartse sectie bepaald mbv opgeslagen coördinaten.
 De grenzen van het meest stroomafwaarts gelegen traject worden bepaald.
 De grenzen van de volgende trajecten van de betreffende sectie worden bepaald.
 Dit wordt herhaald voor de andere secties.
@@ -68,8 +68,20 @@ Het volgende transect zal beginnen op het einde van het vorige transect.
 Elk transect heeft dus 5 cellen met een lengte van 3,33 meter en gelijke breedte.
 Door deze werkwijze ontstaat een virtueel raster van cellen waarbinnen alle metingen gebeuren.
 
--   GPS coordinaten worden genomen in het centrum van iedere cel (=meetpunt). Kies voor een duidelijke labelling van de coordinaten met een volgnummer die overeenkomt met de volgorde waarin het veldwerk gebeurd.
+-   GPS coördinaten worden genomen in het centrum van iedere cel (=meetpunt).
+    Kies voor een duidelijke labeling van de coördinaten met een volgnummer die overeenkomt met de stroomopwaartse beweging van de monitoring.
+    Noteer het gebruikte coördinatenreferentiesysteem (EPSG).
+
+    | traject    | trimblecode | X          | Y          |
+    |------------|-------------|------------|------------|
+    | schurfert1 | 1           | 203752.077 | 186898.040 |
+    | schurfert1 | 2           | 203752.531 | 186899.161 |
+    | schurfert1 | 3           | 203753.093 | 186900.469 |
+
+    : Voorbeeld invullen coördinaten. EPSG is 31370 in dit voorbeeld.
+
 -   De stroomsnelheid en diepte worden opgemeten in het centrum van iedere cel (=meetpunt).
+
 -   Het habitat (uitgedrukt als een percentage van verschillende klassen) wordt opgemeten voor de volledige cel.
 
 ```{r echo=FALSE, meten, fig.cap = "Meetmethode voor 1 transect", fig.show = "hold", out.width = "50%", fig.align = "center"}
